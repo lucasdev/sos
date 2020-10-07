@@ -1,0 +1,24 @@
+.pf,
+.pf * {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+.nest-bf-in-pf .form-group {
+    margin-bottom:0px;
+}
+
+.jumbotron {
+    margin-bottom: 1px;
+}
+
+.show-grid [class^="col-"] {
+    background-color: rgba(86, 61, 124, 0.15);
+    border: 1px solid rgba(86, 61, 124, 0.2);
+    padding-bottom: 10px;
+    padding-top: 10px;
+    /*margin-bottom: 15px;*/
+}
+.row {
+    margin-bottom: 20px;
+}

@@ -1,0 +1,36 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="/templates/mainLayout.xhtml">
+    <ui:define name="content">
+        <b:link value="Add" href="#{request.contextPath}/pages/patrimonio/form.xhtml"></b:link>
+        <h2>Patrimonio por marca</h2>
+        <h:messages id="messages"/>
+        <h:form>
+            <b:dataTable value="#{marcaPatrimoniosListBean.patrimonioDTOS}" var="p">
+                <b:dataTableColumn value="${p.nome}" width="30%" />
+                <b:dataTableColumn value="${p.descricao}" width="20%" />
+                <b:dataTableColumn value="${p.nuTombo}" width="20%" />
+                <b:dataTableColumn value="${p.marca.nome}" width="15%" />
+                <b:dataTableColumn width="15%">
+                    <f:facet name="header">
+                        <h:outputText value="Ação"/>
+                    </f:facet>
+                    <b:link styleClass="btn btn-primary" style="margin-right: 10px;"
+                            value="Edit"
+                            href="#{request.contextPath}/pages/patrimonio/form.xhtml?id=#{p.id}"/>
+
+                    <b:commandButton look="danger" value="Delete" action="#{patrimonioListBean.delete()}">
+                        <f:param value="#{p.id}" name="id"/>
+                    </b:commandButton>
+                </b:dataTableColumn>
+            </b:dataTable>
+        </h:form>
+    </ui:define>
+</ui:composition>
+
+</html>

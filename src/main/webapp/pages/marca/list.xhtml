@@ -1,0 +1,44 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <ui:composition template="/templates/mainLayout.xhtml">
+        <ui:define name="content">
+            <b:link value="Add" href="#{request.contextPath}/pages/marca/form.xhtml"></b:link>
+
+            <h2>List</h2>
+
+            <h:messages id="messages"/>
+
+            <h:form>
+                <b:dataTable value="#{marcaListBean.marcasDTO}" var="m">
+                    <b:dataTableColumn width="85%">
+                        <f:facet name="header">
+                            <h:outputText value="Marca"/>
+                        </f:facet>
+                        <b:link style="margin-right: 10px;"
+                                value="${m.nome}"
+                                href="#{request.contextPath}/pages/marca/patrimonios.xhtml?id=#{m.id}"/>
+                    </b:dataTableColumn>
+
+                    <b:dataTableColumn width="15%">
+                        <f:facet name="header">
+                            <h:outputText value="Ação"/>
+                        </f:facet>
+                        <b:link styleClass="btn btn-primary" style="margin-right: 10px;"
+                                value="Edit"
+                                href="#{request.contextPath}/pages/marca/form.xhtml?id=#{m.id}"/>
+
+                        <b:commandButton look="danger" value="Delete" action="#{marcaListBean.delete()}">
+                            <f:param value="#{m.id}" name="id"/>
+                        </b:commandButton>
+                    </b:dataTableColumn>
+                </b:dataTable>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

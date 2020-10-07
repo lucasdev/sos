@@ -1,0 +1,30 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <ui:composition template="/templates/mainLayout.xhtml">
+        <ui:define name="content">
+            <b:link value="List" href="#{request.contextPath}/pages/patrimonio/list.xhtml"></b:link>
+            <h2>Form</h2>
+            <b:messages id="messages"/>
+            <b:form>
+                <h:inputHidden id="id" value="#{patrimonioFormBean.patrimonioDTO.id}" />
+                <b:selectOneMenu ajax="false" valueChangeListener="#{patrimonioFormBean.selectedMarca}" value="#{patrimonioFormBean.selectValue}" label="Marca: " required="true" id="marca_id" select2="true">
+                    <f:selectItem itemLabel="-Selecione uma Marca-" itemValue="#{null}" />
+                    <f:selectItems value="#{patrimonioFormBean.marcas}" var="m" itemValue="#{m}" itemLabel="#{m.nome}" />
+                </b:selectOneMenu>
+                <b:inputText id="nome" label="Nome: " value="#{patrimonioFormBean.patrimonioDTO.nome}" required="true" />
+                <b:inputTextarea id="descricao" label="Descrição: " value="#{patrimonioFormBean.patrimonioDTO.descricao}" />
+                <b:commandButton
+                        validateClient="true"
+                        value="Salvar"
+                        look="primary"
+                        action="#{patrimonioFormBean.salvar()}" />
+            </b:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

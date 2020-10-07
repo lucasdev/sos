@@ -1,0 +1,42 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <ui:composition template="/templates/mainLayout.xhtml">
+        <ui:define name="content">
+            <h2>Upload/Download</h2>
+
+            <b:messages id="messages"/>
+
+            <b:form enctype="multipart/form-data">
+                <p:fileUpload label="Arquivo PDF" value="#{arquivoBean.file}" mode="simple" skinSimple="true"/>
+                <b:commandButton
+                        value="Salvar"
+                        validateClient="true"
+                        styleClass="btn-primary"
+                        action="#{arquivoBean.upload()}"/>
+            </b:form>
+
+            <h:form>
+                <b:dataTable value="#{arquivoBean.arquivoDTOS}" var="m">
+                    <b:dataTableColumn value="${m.path}" label="Arquivo" width="90%" />
+                    <b:dataTableColumn width="30%">
+                        <f:facet name="header">
+                            <h:outputText value="Ação"/>
+                        </f:facet>
+                        <b:commandButton ajax="false"
+                                         immediate="true"
+                                         look="primary"
+                                         value="Download" action="#{arquivoBean.download()}">
+                            <f:param value="#{m.id}" name="arquivo"></f:param>
+                        </b:commandButton>
+                    </b:dataTableColumn>
+                </b:dataTable>
+            </h:form>
+
+        </ui:define>
+    </ui:composition>
+</html>

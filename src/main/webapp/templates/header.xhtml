@@ -1,0 +1,17 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui">
+    <body>
+        <ui:composition>
+            <b:navBar brand="JSF Test" brandHref="#{request.contextPath}/index.xhtml">
+                <b:navbarLinks>
+                    <!--<b:navLink value="Home" href="#{request.contextPath}/index.xhtml"></b:navLink>-->
+                    <b:navLink value="Marca" href="#{request.contextPath}/pages/marca/list.xhtml"></b:navLink>
+                    <b:navLink value="Patrimonio" href="#{request.contextPath}/pages/patrimonio/list.xhtml"></b:navLink>
+                    <b:navLink value="Arquivo" href="#{request.contextPath}/pages/arquivo/list.xhtml"></b:navLink>
+                </b:navbarLinks>
+            </b:navBar>
+        </ui:composition>
+    </body>
+</html>

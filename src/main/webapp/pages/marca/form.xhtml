@@ -1,0 +1,26 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <ui:composition template="/templates/mainLayout.xhtml">
+        <ui:define name="content">
+            <b:link value="List" href="#{request.contextPath}/pages/marca/list.xhtml"></b:link>
+            <h2>Form</h2>
+            <b:messages id="messages"/>
+            <b:form enctype="multipart/form-data">
+                <h:inputHidden id="id" value="#{marcaFormBean.marcaDTO.id}" />
+                <b:inputText id="nome" label="Marca: " value="#{marcaFormBean.marcaDTO.nome}" required="true">
+                    <c:validator validatorId="nomeMarcaValidator" />
+                </b:inputText>
+                <b:commandButton
+                        value="Salvar"
+                        validateClient="true"
+                        styleClass="btn-primary"
+                        action="#{marcaFormBean.salvar()}"/>
+            </b:form>
+        </ui:define>
+    </ui:composition>
+</html>
