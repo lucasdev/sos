@@ -12,6 +12,7 @@
 2. Acesse o diretório do projeto.
 3. Instale as dependências.
 4. Compile o projeto.
+5. Rodar em uma instância do Tomcat-9, o contexto deve ser confirado para `/sos`
 
 ```console
 git clone git@github.com:lucasdev/sos.git
@@ -19,3 +20,7 @@ cd sos
 mvn clean install
 mvn package
 ```
+
+## Url de acesso
+
+http://localhost:8080/sos/index.xhtml
