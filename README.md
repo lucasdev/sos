@@ -14,7 +14,7 @@
 4. Compile o projeto.
 
 ```console
-git clone https://10.1.26.109/Lucas/sos.git
+git clone git@github.com:lucasdev/sos.git
 cd sos
 mvn clean install
 mvn package
